@@ -1,15 +1,35 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+  <div>
+    <!-- Enter value into numb1 then the if statement will work. If its less then 1 the text will show, if you put a number than that number will show -->
+    <PropsExample numb1="" numb2="12"/>
+    <form class="container">
+      <input type="text" placeholder="Enter your name" v-model="firstName">
+      <label>{{ output }}</label>
+      <button @click.prevent="greeting">Greeting</button>
+    </form>
+  </div>
+ 
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import PropsExample from '@/components/PropsExample'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    PropsExample
+  },
+  data(){
+    return{
+      firstName:'',
+      output: ''
+    }
+  },
+  methods: {
+    greeting(){
+      this.output =`Hello ${this.firstName}`
+    }
   }
 }
 </script>
